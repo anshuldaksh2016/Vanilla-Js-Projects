@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .popup {
+            padding: 10px;
+            font-family: cursive;
+            border: 1px solid black;
+            text-align: center;
+            cursor: pointer;
+            width: 200px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            font-size: 0.8em;
+        }
+
+        .output {
+            position: absolute;
+            background-color: #ddd;
+            left: 25%;
+            width: 50%;
+            padding: 15px;
+            border: 1px solid black;
+            height: 25%;
+        }
+
+        .message {
+            text-align: center;
+            font-family: sans-serif;
+            margin-top: 20px;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="output hide">
+        <button class="close">close</button>
+        <div class="message">No Content Yet </div>
+    </div>
+    <div class="popup" data-message="Hello World !">Click Me !</div>
+    <div class="popup" data-message="Js is fun!">Javascript</div>
+    <div class="popup" data-message="Css sucks !">Css </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
