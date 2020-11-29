@@ -1,10 +1,22 @@
-const popup = document.querySelectorAll(".popup");
+const popups = document.querySelectorAll(".popup");
+const popup = document.querySelector(".output");
+const popupMessage = document.querySelector(".message");
+const closeBtn = document.querySelector(".close");
 
-for (let x = 0; x < popup.length; x++) {
-    console.log(popup[x]);
-    popup[x].addEventListener("click", () => {
+closeBtn.addEventListener("click", function () {
+    popup.classList.add("hide");
+})
 
-        let outPutText = popup.getAttribute('data-message');
-        console.log(outPutText)
+
+for (let x = 0; x < popups.length; x++) {
+    console.log(popups[x]);
+    popups[x].addEventListener("click", function () {
+        let outPutText = this.getAttribute('data-message');
+        message(outPutText)
     })
+}
+
+function message(output) {
+    popup.classList.remove("hide");
+    popupMessage.innerText = output;
 }
