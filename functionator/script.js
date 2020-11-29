@@ -4,6 +4,8 @@ let myfunctionList;
 
 let funList = []; // global array we can add commands 
 
+const movementArray = ["right", "left", "up", "down"];
+
 document.addEventListener("DOMContentLoaded", function () {
     myBlock = document.createElement("div");
     myBlock.innerHTML = "Hello world ";
@@ -31,7 +33,7 @@ document.addEventListener("keydown", function (e) {
     else if (keyC === 39)
         addFun("right");
     else if (keyC === 38)
-        addFun("up")
+        addFun("up");
 
     else if (keyC === 40)
         addFun("down")
@@ -39,6 +41,10 @@ document.addEventListener("keydown", function (e) {
         myBlock.style.backgroundColor = randomColor();
     }
 
+    else if (keyC === 82) {
+        let temp = movementArray[Math.floor(Math.random() * movementArray.length)];
+        addFun(temp);
+    }
     else if (keyC == 13 || keyC == 32) {
         //enter and space
         mover();
@@ -58,16 +64,23 @@ function mover() {
             myBlock.style.left = cur.left - cur.width + "px";
         }
         if (item == "right") {
-            myBlock.style.right = cur.left + cur.width + "px";
+            myBlock.style.left = cur.left + cur.width + "px";
         }
         if (item == "up") {
-            myBlock.style.right = cur.top - cur.height + "px";
+            myBlock.style.top = cur.top - cur.height + "px";
         }
         if (item == "down") {
-            myBlock.style.right = cur.top + cur.height + "px";
+            myBlock.style.top = cur.top + cur.height + "px";
         }
 
         setTimeout(mover, 300);
+
+
+    }
+
+    else {
+        myBlock.innerHTML = "Set Path";
+        return;
     }
 }
 
@@ -78,9 +91,19 @@ function addFun(val) {
     span.style.padding = "10px";
     span.style.border = "1px solid #ddd";
 
+
+
     span.addEventListener("mouseover", function () {
         this.style.backgroundColor = "purple";
         this.style.color = "white";
+
+    })
+    span.addEventListener("click", function () {
+        let curIndex = funList.indexOf(this);
+        console.log(curIndex)
+        let tempRemove = funList.splice(curIndex, 1);
+        console.log(tempRemove);
+        myfunctionList.removeChild(this);
 
     })
 
@@ -89,9 +112,11 @@ function addFun(val) {
         this.style.color = "black";
 
     })
+
     myfunctionList.appendChild(span);
     funList.push(span);
     console.log(funList);
+
 }
 
 
