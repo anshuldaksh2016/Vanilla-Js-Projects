@@ -39,10 +39,40 @@ document.addEventListener("keydown", function (e) {
         myBlock.style.backgroundColor = randomColor();
     }
 
+    else if (keyC == 13 || keyC == 32) {
+        //enter and space
+        mover();
+    }
 })
 
+function mover() {
+    if (funList.length > 0) {
+        let cur = myBlock.getBoundingClientRect();
+        let el = funList.shift();
+        let item = el.textContent.replace("+", "");
+        myfunctionList.removeChild(el)
+        myBlock.innerHTML = "Move:" + item;
+
+        //console.log(item);
+        if (item == "left") {
+            myBlock.style.left = cur.left - cur.width + "px";
+        }
+        if (item == "right") {
+            myBlock.style.right = cur.left + cur.width + "px";
+        }
+        if (item == "up") {
+            myBlock.style.right = cur.top - cur.height + "px";
+        }
+        if (item == "down") {
+            myBlock.style.right = cur.top + cur.height + "px";
+        }
+
+        setTimeout(mover, 300);
+    }
+}
+
 function addFun(val) {
-    funList.push(val);
+    //funList.push(val);
     let span = document.createElement("span");
     span.textContent = "+" + val;
     span.style.padding = "10px";
@@ -56,10 +86,11 @@ function addFun(val) {
 
     span.addEventListener("mouseout", function () {
         this.style.backgroundColor = "white";
-        this.style.color = "black"
+        this.style.color = "black";
 
     })
     myfunctionList.appendChild(span);
+    funList.push(span);
     console.log(funList);
 }
 
