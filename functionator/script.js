@@ -18,3 +18,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.body.appendChild(myBlock);
 })
+
+document.addEventListener("keydown", function (e) {
+    e.preventDefault();
+    let keyC = e.keyCode;
+    if (keyC === 37)
+        goLeft();
+    else if (keyC === 39)
+        goRight();
+    else if (keyC === 38)
+        goTop();
+    else if (keyC === 40)
+        goDown();
+
+})
+
+function randomColor() {
+    return Math.random().toString(16).substr(-6);
+}
+
+function goLeft() {
+    let temp = myBlock.offsetLeft;
+    temp = temp - 50;
+    myBlock.style.left = temp + "px";
+    const color = "#" + randomColor();
+    myBlock.style.backgroundColor = color;
+
+}
+
+function goRight() {
+    let temp = myBlock.offsetLeft;
+    temp = temp + 50;
+    myBlock.style.left = temp + "px";
+    const color = "#" + randomColor();
+    myBlock.style.backgroundColor = color;
+}
+
+function goTop() {
+    let temp = myBlock.offsetTop;
+    temp = temp - 50;
+    myBlock.style.top = temp + "px";
+    const color = "#" + randomColor();
+    myBlock.style.backgroundColor = color;
+}
+function goDown() {
+    let temp = myBlock.offsetTop;
+    temp = temp + 50;
+    myBlock.style.top = temp + "px";
+    const color = "#" + randomColor();
+    myBlock.style.backgroundColor = color;
+}
+
+
